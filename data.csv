@@ -1,0 +1,11 @@
+ID,Test_Name,Status,Duration_ms,Priority,Failure_Reason,Comment
+101,Login_Flow,Passed,150,High,None,Login successful in staging environment
+102,Payment_Checkout,Failed,5005,Critical,TimeoutException,Payment gateway response timed out
+103,User_Signup,Passed,320,High,None,User created and welcome email sent
+104,API_Sync,Failed,45,Critical,InternalServerError,API returned 500 status code
+105,Product_Search,Passed,800,Medium,None,Search returned 50 items correctly
+106,Price_Filter,Failed,120,Medium,AssertionError,Sorting order incorrect (ASC vs DESC)
+107,Admin_Dashboard,Skipped,0,Low,EnvUnavailable,Admin environment was offline
+108,Profile_Upload,Failed,2500,High,FileNotFound,Image file missing in directory
+109,System_Logout,Passed,50,Low,None,Session terminated successfully
+110,PDF_Generation,Failed,6000,Medium,TimeoutException,Generation exceeded 5s limit

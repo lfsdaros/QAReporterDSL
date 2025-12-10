@@ -1,0 +1,33 @@
+LOAD "data.csv"
+
+# --- STYLES ---
+
+STYLE Critical {
+    bold: true
+}
+
+STYLE Success {
+    background: green,
+    bold: false
+}
+
+STYLE Failed {
+    background: red,
+    bold: false
+}
+
+STYLE Skipped {
+    background: yellow
+}
+
+APPLY STYLE Failed WHERE Status == "Failed" 
+
+APPLY STYLE Success WHERE Status == "Passed"
+
+APPLY STYLE Skipped WHERE Status == "Skipped"
+
+APPLY STYLE Critical WHERE Priority == "Critical" AND Duration_ms > 300
+
+SAVE "final_report.xlsx"
+
+VISUALIZE EXCEL
