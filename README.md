@@ -1,22 +1,43 @@
 # QA Reporter DSL
 
-**QA Reporter DSL** é uma Linguagem de Domínio Específico (DSL) projetada para automatizar a criação e estilização de relatórios de Garantia de Qualidade (QA). Ela permite definir regras de formatação em um script simples e legível, aplicando-as a dados CSV para gerar relatórios Excel profissionais automaticamente.
+**QA Reporter DSL** é uma Linguagem de Domínio Específico (DSL) projetada para automatizar a criação, análise e estilização de relatórios de Garantia de Qualidade (QA). Ela permite definir regras de formatação em um script simples e legível, aplicando-as a dados CSV brutos para gerar relatórios Excel profissionais e visuais automaticamente.
 
 ## 🚀 Funcionalidades
 
-*   **Sintaxe Legível**: Defina estilos e lógica usando comandos simples (`LOAD`, `STYLE`, `APPLY`).
-*   **Formatação Condicional**: Aplique estilos baseados nos valores dos dados usando operadores lógicos (`AND`, `OR`, `NOT`, `==`, `>`, etc.).
-*   **Estilização Automática**: Defina cores de fundo e negrito dinamicamente.
-*   **Saída em Excel**: Salve relatórios diretamente como arquivos Excel (`.xlsx`).
-*   **Visualização Instantânea**: Abra os relatórios gerados automaticamente no Excel ou no Navegador.
+* **Sintaxe Legível**: Defina estilos e lógica usando comandos simples (`LOAD`, `STYLE`, `APPLY`).
+* **Formatação Condicional Avançada**: Aplique estilos baseados nos valores dos dados usando operadores lógicos e de comparação (`AND`, `OR`, `NOT`, `==`, `>`, `CONTAINS`, etc.).
+* **Estilização Flexível**: Defina cores de fundo e negrito dinamicamente. Escolha entre pintar a linha inteira ou apenas uma coluna específica.
+* **Saída em Excel**: Salve relatórios diretamente como arquivos Excel (`.xlsx`) prontos para envio.
+* **Visualização Multi-Plataforma**: Escolha como deseja ver o resultado final: transformado em um dashboard HTML no **navegador** (`BROWSER`) ou nativamente no **Excel** (`EXCEL`).
 
 ## 🛠️ Instalação
 
-1.  **Pré-requisitos**: Certifique-se de ter o Python 3.x instalado.
-2.  **Instalar Dependências**:
-    ```bash
-    pip install -r requirements.txt
+Siga os passos abaixo para configurar o ambiente de execução.
+
+### 1. Pré-requisitos
+Certifique-se de ter o [Python 3.x](https://www.python.org/downloads/) instalado em sua máquina.
+
+### 2. Configurar Ambiente Virtual (Recomendado)
+A criação de uma `venv` isola as dependências do projeto, evitando conflitos com outras bibliotecas do seu sistema.
+
+* **No Windows:**
+    ```powershell
+    python -m venv venv
+    .\venv\Scripts\activate
     ```
+
+* **No Linux / macOS:**
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+### 3. Instalar Dependências
+Com o ambiente virtual ativado, instale os pacotes necessários listados no arquivo de requisitos:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## 📖 Como Usar
 
