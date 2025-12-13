@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import webbrowser
+import subprocess
 from xlsx2html import xlsx2html
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font
@@ -120,21 +121,31 @@ class Interpeter:
                     print("[ERROR] Use SAVE before VISUALIZE.")
                     return
             
-                # Acessa o filho view_option
                 view_option = t.view_option().getText()
-                
-                if view_option == 'EXCEL':
-                    try:
-                        os.startfile(self.output_file)
-                    except AttributeError:
-                        import subprocess
-                        subprocess.call(['xdg-open', self.output_file])
-                elif view_option == 'BROWSER':
+
+                if view_option == 'BROWSER':
                     html_file = self.output_file.replace('.xlsx', '.html')
                     xlsx2html(self.output_file, html_file)
                     webbrowser.open(html_file)
+                    print(f"Opening HTML visualization for '{self.output_file}' in browser.")
+
+                elif view_option == 'EXCEL': 
+                    if os.environ.get('CODESPACES') == 'true':                   # Running in Codespaces (Remote/Linux)
+                        print(f"[Codespaces] File '{self.output_file}' generated.")
+                        print("To open in Excel, right-click the file in the sidebar and choose 'Download'.")
+
+                    else:                                                        # Running locally (Windows/Linux/MacOS)
+                        try:
+                            os.startfile(self.output_file)
+                            print(f"[Local] Opening '{self.output_file}' in default system application.")
+                        except AttributeError: # Linux/MacOs
+                            subprocess.call(['xdg-open', self.output_file])
+                            print(f"[Local] Opening '{self.output_file}' in default system application.")
+                        except FileNotFoundError:
+                            print(f"[ERROR] File '{self.output_file}' was not found.")
                 return
-            
+             
+
             # Relational expressions (using Pandas notation)
 
             case QAReporterDSLParser.OrContext():

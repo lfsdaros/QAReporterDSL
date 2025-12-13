@@ -1,0 +1,14 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/python:3.11",
+
+    "postCreateCommand": "pip install -r requirements.txt && python -m antlr4_tool -Dlanguage=Python3 -visitor QAReporterDSL.g4",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "mike-lischke.vscode-antlr4"
+            ]
+        }
+    }
+}
