@@ -13,6 +13,7 @@ COLORS_HEX = {
     'red':    'FFFF0000',
     'green':  'FF00FF00',
     'yellow': 'FFFFFF00',
+    'orange': 'FFA500',
 }
 
 class Interpeter:
@@ -195,6 +196,23 @@ class Interpeter:
                 if op == '<':  return col < val
                 if op == '>=': return col >= val
                 if op == '<=': return col <= val
+
+            case QAReporterDSLParser.ContainsContext():
+                col_name = t.ID().getText()
+                val_ctx = t.value()
+                val = self.eval_value(val_ctx)
+
+                if col_name not in self.df.columns:
+                    print(f"[ERROR] Column '{col_name}' not found.")
+                    return None
+                
+                col = self.df[col_name]
+
+                # Make sure there are no '"' on val (in case eval_value doesn't work)
+                search_value = str(val).strip('"')
+                
+                # Match substrings
+                return col.astype(str).str.contains(search_value, case=False, na=False)
 
             case _:
                 pass

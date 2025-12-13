@@ -17,7 +17,7 @@ CONTAINS : 'CONTAINS';
 // Personalization 
 BACKGROUND : 'background' ;
 BOLD : 'bold' ;
-COLOR: 'red' | 'green' | 'yellow';
+COLOR: 'red' | 'green' | 'yellow' | 'orange' ;
 BOOL: 'true' | 'false';
 
 // Input (.csv) and Output (.xlsx) files

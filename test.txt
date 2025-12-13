@@ -20,11 +20,22 @@ STYLE Skipped {
     background: yellow
 }
 
+STYLE SkipTmeoutped {
+    background: yellow
+}
+
+STYLE TimeoutAlert {
+    background: orange,
+    bold: true
+}
+
 APPLY STYLE Failed WHERE Status == "Failed" 
 
 APPLY STYLE Success WHERE Status == "Passed"
 
 APPLY STYLE Skipped WHERE Status == "Skipped"
+
+APPLY STYLE TimeoutAlert WHERE Failure_Reason CONTAINS "Timeout"
 
 APPLY STYLE Critical WHERE Priority == "Critical" AND Duration_ms > 300
 

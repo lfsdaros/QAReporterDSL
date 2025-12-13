@@ -62,7 +62,7 @@ pip install -r requirements.txt
 1.  **Gerar Parser e Lexer:**
     Primeiro, o ANTLR precisa gerar os arquivos Python a partir da gramática (`.g4`):
     ```bash
-    python -m antlr4_tool -Dlanguage=Python3 -visitor QAReporterDSL.g4
+    antlr4 -v 4.9.3 -Dlanguage=Python3 -visitor QAReporterDSL.g4
     ```
 
 2.  **Preparar Arquivos:** Coloque os arquivos `data.csv` e `test.txt` na raiz do projeto.
