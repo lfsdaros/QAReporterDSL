@@ -2,6 +2,22 @@
 
 **QA Reporter DSL** é uma Linguagem de Domínio Específico (DSL) projetada para automatizar a criação, análise e estilização de relatórios de Garantia de Qualidade (QA). Ela permite definir regras de formatação em um script simples e legível, aplicando-as a dados CSV brutos para gerar relatórios Excel profissionais e visuais automaticamente.
 
+## 🎓 Informações do Projeto
+
+| Categoria | Detalhe |
+| :--- | :--- |
+| **Equipe** | Luiz Daros e Guilherme Valença |
+| **Disciplina** | Compiladores |
+| **Professor** | Luis Carlos Menezes |
+
+## 🎯 Motivação e Descrição Informal da Linguagem
+
+A criação de relatórios de Garantia de Qualidade (QA) é fundamental, mas a estilização condicional (ex: pintar linhas falhas de vermelho) é um processo manual e repetitivo. A **QA Reporter DSL** foi desenvolvida para eliminar essa complexidade.
+
+É uma Linguagem de Domínio Específico (DSL) que permite ao engenheiro de QA ou Analista de Dados escrever **regras de formatação legíveis por humanos** em um script simples (`test.txt`).
+
+O **Compilador/Interpretador** processa esse script, analisa os dados de um arquivo CSV e aplica as regras de estilo de forma inteligente, gerando um relatório Excel visualmente profissional e pronto para ser compartilhado. O compilador atua como um tradutor de regras de negócio em formatação.
+
 ## 🚀 Funcionalidades
 
 * **Sintaxe Legível**: Defina estilos e lógica usando comandos simples (`LOAD`, `STYLE`, `APPLY`).
@@ -39,14 +55,36 @@ Com o ambiente virtual ativado, instale os pacotes necessários listados no arqu
 pip install -r requirements.txt
 ```
 
-## 📖 Como Usar
+## 💻 Guia de Execução do Compilador/Interpretador
 
-1.  **Prepare os Dados**: Coloque seus dados brutos em um arquivo `.csv` (ex: `data.csv`).
-2.  **Escreva o Script**: Crie um arquivo de texto (ex: `test.txt`) com suas regras de estilo.
-3.  **Execute**:
+### Parte A: Execução Local
+
+1.  **Gerar Parser e Lexer:**
+    Primeiro, o ANTLR precisa gerar os arquivos Python a partir da gramática (`.g4`):
+    ```bash
+    python -m antlr4_tool -Dlanguage=Python3 -visitor QAReporterDSL.g4
+    ```
+
+2.  **Preparar Arquivos:** Coloque os arquivos `data.csv` e `test.txt` na raiz do projeto.
+
+3.  **Executar o Interpretador:**
     ```bash
     python main.py
     ```
+
+### Parte B: Execução no GitHub Codespaces
+
+O Codespaces é configurado via `.devcontainer.json` para realizar a instalação de dependências e a geração do Parser/Lexer automaticamente no *startup*.
+
+1.  **Inicie o Codespace:** Abra o projeto no GitHub Codespaces (Botão "Code" -> "Create codespace").
+2.  **Preparar Arquivos:** Coloque os arquivos `data.csv` e `test.txt` na raiz do projeto.
+3.  **Executar o Interpretador:** No terminal integrado:
+    ```bash
+    python main.py
+    ```
+4.  **Visualização:** O sistema adaptará a saída:
+    * **BROWSER:** Instruirá o usuário a clicar com o botão direito no arquivo `.html` gerado e selecionar **"Open Preview"** no VS Code.
+    * **EXCEL:** Instruirá o usuário a **baixar** o arquivo `.xlsx` gerado.
 
 ## 📝 Guia de Sintaxe da DSL
 
