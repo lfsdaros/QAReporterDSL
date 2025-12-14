@@ -126,9 +126,20 @@ class Interpeter:
 
                 if view_option == 'BROWSER':
                     html_file = self.output_file.replace('.xlsx', '.html')
-                    xlsx2html(self.output_file, html_file)
-                    webbrowser.open(html_file)
-                    print(f"Opening HTML visualization for '{self.output_file}' in browser.")
+                    try:
+                        xlsx2html(self.output_file, html_file)
+                    except Exception as e:
+                        print(f"[ERROR] Failed to generate HTML file: {e}")
+                        return
+                    
+                    if os.environ.get('CODESPACES') == 'true':
+                        print(f"[VISUAL - Codespaces] HTML report '{html_file}' generated.")
+                        print("Please right-click the file in the sidebar and choose 'Open Preview'.")  # User is now able to preview generated file
+                    else:
+                        webbrowser.open(html_file)
+                        print(f"[VISUAL - Local] Opening HTML visualization for '{html_file}' in browser.")
+                    
+                    return
 
                 elif view_option == 'EXCEL': 
                     if os.environ.get('CODESPACES') == 'true':                   # Running in Codespaces (Remote/Linux)
