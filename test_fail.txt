@@ -1,6 +1,5 @@
 LOAD "data.csv"
 
-# Duplicate Style
 STYLE MyStyle { bold: true }
 STYLE MyStyle { background: red }
 

@@ -1,6 +1,5 @@
 LOAD "data.csv"
 
-# --- STYLES ---
 
 STYLE Critical {
     bold: true

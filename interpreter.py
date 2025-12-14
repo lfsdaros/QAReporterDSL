@@ -8,7 +8,7 @@ from openpyxl.styles import PatternFill, Font
 from antlr4 import *
 from QAReporterDSLParser import QAReporterDSLParser
 
-# Constantes de Cores
+# Color constants (hexadecimal)
 COLORS_HEX = {
     'red':    'FFFF0000',
     'green':  'FF00FF00',
